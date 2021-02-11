@@ -1,0 +1,15 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Index</title>  
+</head>  
+<body> 
+<form method="POST" autocomplete="off" action="{{url}}" class="post-form" style="display:flex;">  
+        {% csrf_token %}  
+        {{ activity_form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>  
+    </form>
+<a href="/">HOME</a>
+</body>  
+</html>  
