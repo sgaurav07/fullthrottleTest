@@ -1,15 +1,54 @@
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
-    <meta charset="UTF-8">  
-    <title>Index</title>  
-</head>  
-<body> 
-<form method="POST" autocomplete="off" action="{{url}}" class="post-form" style="display:flex;">  
-        {% csrf_token %}  
-        {{ activity_form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>  
-    </form>
-<a href="/">HOME</a>
-</body>  
-</html>  
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                    <!-- Brand/logo -->
+                    <a class="navbar-brand" href="/">Full Throtle Test</a>
+
+                    <!-- Links -->
+                    <ul class="navbar-nav navbar-right">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="activity">Activity Period</a>
+                        </li>
+
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="container-fluid">
+        <div class="jumbotron">
+            <form method="POST" autocomplete="off" action="{{url}}" class="post-form">
+                {% comment %} to stop cross-site references forgery {% endcomment %}
+                {% csrf_token %}
+                {% comment %} form from the database {% endcomment %}
+                {{ activity_form.as_p }}
+                {% comment %} save the content {% endcomment %}
+                <button type="submit" class="btn btn-success">Save</button>
+            </form>
+        </div>
+        <p>To add activity period of the existing members. </p>
+        <p> Time Format: "2020-02-01 13:33:00.000000" or any valid datetime format</p>
+    </div>
+</body>
+
+</html>

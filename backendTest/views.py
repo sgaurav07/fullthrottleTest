@@ -28,7 +28,7 @@ def dataretrive(request):
     userDetails = User.objects.all()
     members = []
     retval = dict()
-    
+    retval["ok"] = True
     for user in userDetails:
         details = dict()
         details["id"] = user.id
@@ -47,4 +47,5 @@ def dataretrive(request):
         details["activity_periods"] = activity_periods
         members.append(details)
     retval['members'] = members
+    
     return HttpResponse(json.dumps(retval), content_type="application/json")

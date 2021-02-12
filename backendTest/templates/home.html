@@ -1,15 +1,53 @@
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
-    <meta charset="UTF-8">  
-    <title>Index</title>  
-</head>  
-<body>  
-<form method="POST" class="post-form" style="display: flex; margin-left:5px; padding:10px">  
-        {% csrf_token %}  
-        {{ user_form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>  
-    </form>
-<a href="activity"> Activity Record</a>
-</body>  
-</html>  
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                    <!-- Brand/logo -->
+                    <a class="navbar-brand" href="/">Full Throtle Test</a>
+
+                    <!-- Links -->
+                    <ul class="navbar-nav navbar-right">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="activity">Activity Period</a>
+                        </li>
+
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="container-fluid">
+        <div class="jumbotron">
+            <form method="POST" class="post-form">
+                {% comment %} to stop cross-site references forgery {% endcomment %}
+                {% csrf_token %}
+                {% comment %} form from the database {% endcomment %}
+                {{ user_form.as_p }}
+                {% comment %} save the content {% endcomment %}
+                <button type="submit" class="btn btn-success">Save</button>
+            </form>
+        </div>
+        <p>To add new member Record here</p>
+    </div>
+</body>
+
+</html>
