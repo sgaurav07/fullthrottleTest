@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+# User model to store member details
 class User(models.Model):
     real_name = models.CharField(max_length=100,null=False)
     tz = models.CharField(max_length=100)
@@ -12,7 +12,7 @@ class User(models.Model):
         '''docstring for meta'''
         verbose_name_plural = "User Record"
     
-
+#Activity model to store activity Period information
 class Activity_Period(models.Model):
     
     user = models.ForeignKey(User,on_delete=models.CASCADE)

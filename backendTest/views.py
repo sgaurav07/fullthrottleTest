@@ -5,6 +5,8 @@ from .forms import UserForm, ActivityPeriod
 from django.http import HttpResponse
 import json
 from datetime import datetime
+
+#API to add new members
 def home_view(request): 
     
     user_form = UserForm(request.POST or None) 
@@ -16,6 +18,7 @@ def home_view(request):
         return render(request,"activity.html",{'activity_form':activity_form, 'url':url})
     return render(request,"home.html", {'user_form':user_form})
 
+#API to add activity period of members
 def activity_view(request):
     activity_form = ActivityPeriod(request.POST or None)
     if activity_form.is_valid():

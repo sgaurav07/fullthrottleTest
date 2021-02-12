@@ -4,12 +4,13 @@ from django.contrib.admin.widgets import AdminDateWidget
 from .models import *
 from django.forms.fields import DateField
 
+# Member add form
 class UserForm(forms.ModelForm): 
-    # specify the name of model to use 
     class Meta: 
         model = User 
         fields = "__all__"
 
+# Activity Period add forms
 class ActivityPeriod(forms.ModelForm):
 
     class Meta:
